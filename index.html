@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Z-Admin</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div class="layui-header">
+        <!-- logo 区域 -->
+        <div class="layui-logo">
+            <img src="/images/security.png" alt="logo"/>
+            <cite>&nbsp;Z-Admin&emsp;</cite>
+        </div>
+
+        <!-- 头部区域 -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item" lay-unselect>
+                <a lay-event="flexible" title="侧边伸缩">
+                    <i class="layui-icon layui-icon-shrink-right"></i>
+                </a>
+            </li>
+            <!-- 面包屑 -->
+            <span class="layui-breadcrumb">
+                <a><cite>首页</cite></a>
+            </span>
+        </ul>
+
+        <!-- 头像区域 -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item" lay-unselect>
+                <a lay-event="clear" title="清理标签缓存"><img src="/images/clear.png" alt="" style="height: 18px;"/></a>
+            </li>
+
+            <li class="layui-nav-item" lay-unselect>
+                <a>
+                    <img src="/images/avatar.png" class="layui-nav-img" alt="头像">
+                    <cite>管理员</cite>
+                    <span class="layui-nav-more"></span>
+                </a>
+                <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                    <dd lay-unselect>
+                        <a href="#">个人中心</a>
+                    </dd>
+                    <dd lay-unselect>
+                        <a href="#">修改密码</a>
+                    </dd>
+                    <hr>
+                    <dd lay-unselect>
+                        <a href="#">退出</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="layui-side">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航）-->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test" lay-accordion="true">
+                <li class="layui-nav-item">
+                    <a lay-url="/home/index.html" lay-id="home"><i
+                            class="layui-icon layui-icon-template"></i>&emsp;<cite>首页</cite></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-home"></i>&emsp;<cite>所有商品</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="#"><cite>列表一</cite></a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="#" lay-id="1"
+                                       lay-url="https://demo.easyweb.vip/iframe/page/console/console.html "><cite>列表一11</cite></a>
+                                </dd>
+                                <dd><a href="#" lay-id="2"
+                                       lay-url="http://www.layui.com"><cite>列表二</cite></a></dd>
+                                <dd><a href="#" lay-id="3" lay-url="http://www.sina.com"><cite>列表三</cite></a>
+                                </dd>
+                            </dl>
+                        </dd>
+                        <dd><a href="#" lay-id="2" lay-url="http://www.layui.com"><cite>列表二</cite></a></dd>
+                        <dd><a href="#" lay-id="3" lay-url="http://www.sina.com"><cite>列表三</cite></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-set"></i>&emsp;<cite>多级目录</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="#"><cite>列表一</cite></a></dd>
+                        <dd><a href="#"><cite>列表二</cite></a></dd>
+                        <dd><a href="#"><cite>超链接</cite></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-app"></i>&emsp;<cite>发布商品</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="#"><cite>列表一</cite></a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="#"><cite>列表一</cite></a></dd>
+                                <dd><a href="#"><cite>列表二</cite></a></dd>
+                            </dl>
+                        </dd>
+                        <dd><a href="#"><cite>列表二</cite></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a><i class="layui-icon layui-icon-app"></i>&emsp;<cite>发布商品</cite></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-pagetabs">
+            <div class="layui-icon admin-tabs-control layui-icon-refresh-3" lay-event="refresh"></div>
+            <div class="layui-tab" lay-unauto lay-allowclose="true" lay-filter="lay-tab">
+                <ul class="layui-tab-title">
+                    <li lay-id="home" lay-attr="/home/index.html" class="layui-this"><i
+                            class="layui-icon layui-icon-home"></i></li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <iframe src="/home/index.html" class="layui-iframe"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <ul class="rightmenu">
+            <li data-type="closethis">关闭此页</li>
+            <li data-type="closeall">关闭所有</li>
+            <li data-type="closeothers">关闭其他</li>
+            <li data-type="closeleft">关闭左侧</li>
+            <li data-type="closeright">关闭右侧</li>
+        </ul>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        copyright © 2019 Z-Admin all rights reserved.
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/zadmin.js"></script>
+</body>
+
+</html>
