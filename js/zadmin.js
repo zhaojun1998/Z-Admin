@@ -72,75 +72,46 @@
         }
     };
 
-    // element.on('nav(test)', function(elem) {
-    //     //如果点击的是条目就不切换新增选项卡
-    //     if (!$(elem).parent().hasClass("layui-nav-item") || !$(elem).parent().parent().hasClass("layui-nav-child")) {
-    //         var obj = $(this);
+    element.on('nav(test)', function(elem) {
+        // 如果点击的目录还有子目录就不做任何操作.
+        if ($(elem).find("span.layui-nav-more").length === 0) {
+            var obj = $(this);
 
-    //         var title = obj.find("cite").html();
-    //         var id = obj.attr("lay-id");
-    //         var url = obj.attr("lay-url");
-    
-    //         if ($(".layui-tab-title li[lay-id]").length <= 0) {
-    //             activeTab.tabAdd(id, title, url);
-    //         } else {
-    //             // 如已存在打开的 tab 页, 则直接切换过去.
-    //             var isOpen = false;
-    //             $.each($(".layui-tab-title li[lay-id]"), function () {
-    //                 if ($(this).attr("lay-id") == id) {
-    //                     isOpen = true;
-    //                 }
-    //             })
-    //             if (isOpen == false) {
-    //                 activeTab.tabAdd(id, title, url);
-    //             }
-    //         }
-    //         activeTab.tabChange(id);
-    //         // 构建面包屑
-    //         $("body div.layui-layout-admin div.layui-header ul span.layui-breadcrumb").html(buildBreadcrumb(obj, true));
-    //     }
-    // });
+            var title = obj.find("cite").html();
+            var id = obj.attr("lay-id");
+            var url = obj.attr("lay-url");
 
-    /**
-     * 点击导航时, 新增 tab 页
-     */
-    $(".layui-side-scroll a[lay-url]").click(function () {
-        var obj = $(this);
+            var tabs = $(".layui-tab-title li[lay-id]");
 
-        var title = obj.find("cite").html();
-        var id = obj.attr("lay-id");
-        var url = obj.attr("lay-url");
-
-        var tabs = $(".layui-tab-title li[lay-id]");
-
-        if (tabs.length <= 0) {
-            activeTab.tabAdd(id, title, url);
-        } else {
-            // 如已存在打开的 tab 页, 则直接切换过去.
-            var isOpen = false;
-
-            $.each($(tabs), function () {
-                if ($(this).attr("lay-id") === id) {
-                    isOpen = true;
-                }
-            });
-
-            if (isOpen === false) {
+            if (tabs.length <= 0) {
                 activeTab.tabAdd(id, title, url);
+            } else {
+                // 如已存在打开的 tab 页, 则直接切换过去.
+                var isOpen = false;
+
+                $.each($(tabs), function () {
+                    if ($(this).attr("lay-id") === id) {
+                        isOpen = true;
+                    }
+                });
+
+                if (isOpen === false) {
+                    activeTab.tabAdd(id, title, url);
+                }
             }
+            activeTab.tabChange(id);
         }
-        activeTab.tabChange(id);
     });
 
     /**
      * 构建面包屑的 HTML
      * @param {object}  obj   当前标签的
-     * @param {boolean} flag  是否最底层的导航   
+     * @param {boolean} flag  是否最底层的导航
      * @param {Text}    html  存放面包屑 HTML的变量
      */
     function buildBreadcrumb(obj, flag, html) {
         var currentBreadcurmbHTML;
-        var currentNavText = $(obj).find("cite").html();
+        var currentNavText = $(obj).first().find("cite").html();
 
         // falg 为 true 表示最底级的导航.
         if (flag) {
@@ -170,7 +141,7 @@
         $(document).click(function () {
             rightMenu.hide();
         });
-        //桌面点击右击 
+        //桌面点击右击
         $("body").on('contextmenu', '.layui-tab-title li', function (e) {
             rightMenu.show();
             rightMenu.find("li").attr("data-id", $(this).attr("lay-id"));
