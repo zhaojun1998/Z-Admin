@@ -8,12 +8,12 @@
 
     // 标签卡公共方法.
     var activeTab = {
-        tabAdd: function (id, title, url) {
+        tabAdd(id, title, url) {
             //新增一个Tab项
-            element.tabAdd('lay-tab', {
+            element.tabAdd("lay-tab", {
                 id: id,
                 title: title,
-                content: '<iframe data-frame-id="' + id + '" class="layui-iframe" src="' + url + '"></iframe>'
+                content: "<iframe data-frame-id='" + id + "' class='layui-iframe' src='" + url + "'></iframe>"
             });
             if (rememberTab) {
                 tabList.push({
@@ -24,14 +24,14 @@
                 sessionStorage.setItem("tabs", JSON.stringify(tabList));
             }
         },
-        tabChange: function (id) {
+        tabChange(id) {
             //切换到指定Tab项
-            element.tabChange('lay-tab', id);
+            element.tabChange("lay-tab", id);
         },
-        tabDelete: function (id) {
+        tabDelete(id) {
             element.tabDelete("lay-tab", id);
         },
-        tabDeleteAll: function (ids) {
+        tabDeleteAll(ids) {
             $.each(ids, function (i, item) {
                 element.tabDelete("lay-tab", item);
             })
@@ -40,14 +40,14 @@
 
     // 获取页面上所有的标有 lay-event 的元素, 点击时对应相应的事件.
     $(document).on("click", "*[lay-event]", function () {
-        var event = $(this).attr('lay-event');
-        typeof active[event] === 'function' && active[event].apply(this);
+        var event = $(this).attr("lay-event");
+        typeof active[event] === "function" && active[event].apply(this);
     });
 
     // 框架事件
     var active = {
         // 导航收起, 展开动作
-        flexible: function() {
+        flexible() {
             var elem = $(".layui-layout-admin");
             var flag = elem.hasClass("admin-nav-mini");
             if (flag) {
@@ -56,19 +56,18 @@
                 elem.addClass("admin-nav-mini");
             }
         },
-        refresh: function() {
+        refresh() {
             // 硬核刷新法 ~~~
             var iframes = $(".layui-layout-admin .layui-tab .layui-tab-item.layui-show .layui-iframe");
             iframes[0].src = iframes[0].src;
         },
-        clear: function() {
+        clear() {
             layer.confirm('确认清空标签缓存吗?', {icon: 3, title:'提示'}, function(index){
                 sessionStorage.setItem("tabs", null);
                 sessionStorage.setItem("currentTabId", "main");
                 layer.close(index);
                 layer.msg("清理成功");
-              });
-            
+            });
         }
     };
 
@@ -110,6 +109,15 @@
      * @param {Text}    html  存放面包屑 HTML的变量
      */
     function buildBreadcrumb(obj, flag, html) {
+        console.log(obj);
+        if (obj === undefined) {
+            obj = $(".layui-side-scroll .layui-this a[lay-url]");
+        }
+
+        if (flag === undefined) {
+            flag = true;
+        }
+
         var currentBreadcurmbHTML;
         var currentNavText = $(obj).first().find("cite").html();
 
@@ -131,18 +139,18 @@
         if (parent.length !== 0) {
             return buildBreadcrumb(parent, false, html);
         }
-        return html;
+        $("body div.layui-layout-admin div.layui-header ul span.layui-breadcrumb").html(html);
     }
 
 
     //绑定右键菜单
     function CustomRightClick() {
-        var rightMenu = $('.rightmenu');
+        var rightMenu = $(".rightmenu");
         $(document).click(function () {
             rightMenu.hide();
         });
         //桌面点击右击
-        $(document).on('contextmenu', '.layui-tab-title li', function (e) {
+        $(document).on("contextmenu", ".layui-tab-title li", function (e) {
             rightMenu.show();
             var popupmenu = $(".rightmenu");
             rightMenu.find("li").attr("data-id", $(this).attr("lay-id"));
@@ -168,7 +176,7 @@
         var tabtitle = $(".layui-tab-title li");
 
         if (event === "closethis") {
-            if (currentRightClickId !== 'home') {
+            if (currentRightClickId !== "home") {
                 activeTab.tabDelete(currentRightClickId);
             }
         } else if (event === "closeall") {
@@ -218,25 +226,25 @@
             activeTab.tabDeleteAll(ids);
         }
 
-        $('.rightmenu').hide();
+        $(".rightmenu").hide();
     });
 
 
     // 点击标签卡定位菜单
-    element.on('tab(lay-tab)', function(elem) {
-        var filter = 'test'; //菜单
-        var id = $(this).attr('lay-id');
-        var navElem = $('.layui-nav[lay-filter="' + filter + '"]'); //菜单导航元素
+    element.on("tab(lay-tab)", function(elem) {
+        var filter = "test"; //菜单
+        var id = $(this).attr("lay-id");
+        var navElem = $(".layui-nav[lay-filter='" + filter + "']"); //菜单导航元素
         //移除所有选中、获取当前tab选择导航、标注选中样式、展开条目
-        navElem.find('li, dd').removeClass('layui-this').find('a[lay-id="' + id + '"]').parent().first().addClass('layui-this').parents('li,dd').addClass('layui-nav-itemed');
+        navElem.find("li, dd").removeClass("layui-this").find("a[lay-id='" + id + "']").parent().first().addClass("layui-this").parents("li,dd").addClass("layui-nav-itemed");
 
-        $("body div.layui-layout-admin div.layui-header ul span.layui-breadcrumb").html(buildBreadcrumb($(".layui-side-scroll .layui-this a[lay-url]"), true));
+        buildBreadcrumb();
         if (rememberTab) {
             sessionStorage.setItem("currentTabId", id);
         }
     });
 
-    element.on('tabDelete(lay-tab)', function(elem){
+    element.on("tabDelete(lay-tab)", function(elem){
         tabList.splice(elem.index - 1, 1);
         if (rememberTab) {
             sessionStorage.setItem("tabs", JSON.stringify(tabList));
@@ -251,7 +259,7 @@
             flag = true;
         }
         $("div.layui-side-scroll .layui-nav-item").removeClass("layui-nav-itemed").removeClass("layui-this");
-        if($(this).has('dl').length){//如果有子菜单，显示下拉样式
+        if($(this).has("dl").length){//如果有子菜单，显示下拉样式
             if (flag) {
                 $(this).addClass("layui-nav-itemed");
             }
