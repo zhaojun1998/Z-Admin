@@ -142,8 +142,9 @@
             rightMenu.hide();
         });
         //桌面点击右击
-        $("body").on('contextmenu', '.layui-tab-title li', function (e) {
+        $(document).on('contextmenu', '.layui-tab-title li', function (e) {
             rightMenu.show();
+            var popupmenu = $(".rightmenu");
             rightMenu.find("li").attr("data-id", $(this).attr("lay-id"));
             l = ($(document).width() - e.clientX) < popupmenu.width() ? (e.clientX - popupmenu
                 .width()) : e.clientX;
