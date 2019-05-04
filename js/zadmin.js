@@ -16,11 +16,7 @@
                 content: "<iframe data-frame-id='" + id + "' class='layui-iframe' src='" + url + "'></iframe>"
             });
             if (rememberTab) {
-                tabList.push({
-                    "id": id,
-                    "title": title,
-                    "url": url
-                });
+                tabList.push({id, title, url});
                 sessionStorage.setItem("tabs", JSON.stringify(tabList));
             }
         },
@@ -109,12 +105,11 @@
      * @param {Text}    html  存放面包屑 HTML的变量
      */
     function buildBreadcrumb(obj, flag, html) {
-        console.log(obj);
-        if (obj === undefined) {
+        if (typeof obj === 'undefined') {
             obj = $(".layui-side-scroll .layui-this a[lay-url]");
         }
 
-        if (flag === undefined) {
+        if (typeof flag === 'undefined') {
             flag = true;
         }
 
@@ -144,7 +139,7 @@
 
 
     //绑定右键菜单
-    function CustomRightClick() {
+    function customRightClick() {
         var rightMenu = $(".rightmenu");
         $(document).click(function () {
             rightMenu.hide();
@@ -154,9 +149,9 @@
             rightMenu.show();
             var popupmenu = $(".rightmenu");
             rightMenu.find("li").attr("data-id", $(this).attr("lay-id"));
-            l = ($(document).width() - e.clientX) < popupmenu.width() ? (e.clientX - popupmenu
+            let l = ($(document).width() - e.clientX) < popupmenu.width() ? (e.clientX - popupmenu
                 .width()) : e.clientX;
-            t = ($(document).height() - e.clientY) < popupmenu.height() ? (e.clientY - popupmenu
+            let t = ($(document).height() - e.clientY) < popupmenu.height() ? (e.clientY - popupmenu
                 .height()) : e.clientY;
             popupmenu.css({
                 left: l,
@@ -166,7 +161,7 @@
         });
     }
 
-    CustomRightClick();
+    customRightClick();
 
     // 点击右键菜单的功能时.
     $(".rightmenu li").click(function () {
