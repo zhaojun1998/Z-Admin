@@ -105,11 +105,11 @@
      * @param {Text}    html  存放面包屑 HTML的变量
      */
     function buildBreadcrumb(obj, flag, html) {
-        if (typeof obj === 'undefined') {
+        if (typeof obj === "undefined") {
             obj = $(".layui-side-scroll .layui-this a[lay-url]");
         }
 
-        if (typeof flag === 'undefined') {
+        if (typeof flag === "undefined") {
             flag = true;
         }
 
