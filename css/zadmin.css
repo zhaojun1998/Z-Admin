@@ -243,6 +243,7 @@
 }
 
 .layui-layout-admin .layui-side .layui-nav .layui-nav-item a {
+    cursor: pointer;
     height: 50px;
     line-height: 50px;
     padding-left: 30px;
@@ -324,12 +325,6 @@
     padding-left: 110px
 }
 
-/* 一级目录额外的高度 */
-.layui-layout-admin .layui-side .layui-nav .layui-nav-item>a {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    cursor: pointer
-}
 /* ----- 导航样式 ----- */
 
 
@@ -557,9 +552,9 @@
 .layui-iframe {
     position: absolute;
     width: 100%;
-    height: calc(100% - 40px) !important;
+    height: calc(100% - 41px) !important;
     left: 0;
-    top: 40px;
+    top: 41px;
     right: 0;
     bottom: 0;
     border: none;
