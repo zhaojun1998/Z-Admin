@@ -8,7 +8,7 @@
 
     // 标签卡公共方法.
     var activeTab = {
-        tabAdd(id, title, url) {
+        tabAdd: function(id, title, url) {
             //新增一个Tab项
             element.tabAdd("lay-tab", {
                 id: id,
@@ -16,18 +16,22 @@
                 content: "<iframe data-frame-id='" + id + "' class='layui-iframe' src='" + url + "'></iframe>"
             });
             if (rememberTab) {
-                tabList.push({id, title, url});
+                tabList.push({
+                    id: id,
+                    title: title,
+                    url: url
+                });
                 sessionStorage.setItem("tabs", JSON.stringify(tabList));
             }
         },
-        tabChange(id) {
+        tabChange: function(id) {
             //切换到指定Tab项
             element.tabChange("lay-tab", id);
         },
-        tabDelete(id) {
+        tabDelete: function(id) {
             element.tabDelete("lay-tab", id);
         },
-        tabDeleteAll(ids) {
+        tabDeleteAll: function(ids) {
             $.each(ids, function (i, item) {
                 element.tabDelete("lay-tab", item);
             })
@@ -43,22 +47,22 @@
     // 框架事件
     var active = {
         // 导航收起, 展开动作
-        flexible() {
+        flexible: function() {
             var elem = $(".layui-layout-admin");
             var flag = elem.hasClass("admin-nav-mini");
             if (flag) {
-                elem.removeClass("admin-nav-mini")
+                elem.removeClass("admin-nav-mini");
             } else {
                 elem.addClass("admin-nav-mini");
             }
         },
-        refresh() {
+        refresh: function() {
             // 硬核刷新法 ~~~
             var iframes = $(".layui-layout-admin .layui-tab .layui-tab-item.layui-show .layui-iframe");
             iframes[0].src = iframes[0].src;
         },
-        clear() {
-            layer.confirm('确认清空标签缓存吗?', {icon: 3, title:'提示'}, function(index){
+        clear: function() {
+            layer.confirm("确认清空标签缓存吗?", {icon: 3, title:"提示"}, function(index){
                 sessionStorage.setItem("tabs", null);
                 sessionStorage.setItem("currentTabId", "main");
                 layer.close(index);
@@ -273,6 +277,6 @@
             }
             activeTab.tabChange(sessionStorage.getItem("currentTabId"));
         }
-    })
+    });
 });
 
