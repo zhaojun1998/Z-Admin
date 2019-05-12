@@ -174,6 +174,7 @@ layui.define(["element", "layer"], function (exports) {
     $(document).ready(function() {
         if (rememberTab) {
             var tabs = JSON.parse(sessionStorage.getItem("tabs"));
+            var currentTabId = sessionStorage.getItem("currentTabId");
             for (var i = 0; tabs != null && i < tabs.length; i++) {
                 zadmin.tabAdd({
                     id: tabs[i].id,
@@ -181,7 +182,7 @@ layui.define(["element", "layer"], function (exports) {
                     url: tabs[i].url
                 });
             }
-            zadmin.tabChange(sessionStorage.getItem("currentTabId"));
+            zadmin.tabChange(currentTabId);
         }
     });
 
