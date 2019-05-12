@@ -1,22 +1,12 @@
-layui.config({
-    base: 'js/',
-}).define(['element', 'layer', 'tabRightMenu'], function (exports) {
+layui.define(["element", "layer"], function (exports) {
     var $ = jQuery = layui.jquery;
     var element = layui.element;
     var layer = layui.layer;
 
     var tabLayFilter = "lay-tab";
-    var tabRightMenu = layui.tabRightMenu;
     var rememberTab = true;
     var tabList = [];
-    var tabsSelector = $(".layui-pagetabs .layui-tab-title li[lay-id]");
-
-    // 渲染 tab 右键菜单.
-    tabRightMenu.render({
-        filter: tabLayFilter,
-        pintabIDs: ['main'],
-        width: 110,
-    });
+    var tabsSelector = ".layui-pagetabs .layui-tab-title li[lay-id]";
 
     var zadmin = {
         tabAdd: function (o) {
@@ -79,22 +69,20 @@ layui.config({
                 layer.msg("清理成功");
             });
         },
-        buildBreadcrumb: function (obj, flag, html) {
-            if (typeof obj === "undefined") {
-                obj = $(".layui-side-scroll .layui-this a[lay-url]");
-            }
+        buildBreadcrumb: function (obj, isLast, html) {
 
+            obj = obj ? obj : $(".layui-side-scroll .layui-this a[lay-url]");
             html = html ? html : "";
 
-            if (typeof flag === "undefined") {
-                flag = true;
+            if (typeof isLast === "undefined") {
+                isLast = true;
             }
 
             var currentBreadcurmbHTML;
             var currentNavText = $(obj).first().find("cite").html();
 
             // falg 为 true 表示最底级的导航.
-            if (flag) {
+            if (isLast) {
                 currentBreadcurmbHTML =  "<a><cite>" + currentNavText + "</cite></a>";
             } else {
                 currentBreadcurmbHTML =  "<a href='#'>" + currentNavText + "</a><span lay-separator=''>/</span>";
@@ -112,9 +100,10 @@ layui.config({
                 return this.buildBreadcrumb(parent, false, html);
             }
             $("body div.layui-layout-admin div.layui-header ul span.layui-breadcrumb").html(html);
-            console.log(html);
         },
-
+        removeLoading: function () {
+            $(".page-loading").hide();
+        }
     };
 
     // 获取页面上所有的标有 lay-event 的元素, 点击时对应相应的事件.
@@ -123,7 +112,7 @@ layui.config({
         typeof zadmin[event] === "function" && zadmin[event].apply(this);
     });
 
-    element.on('nav(test)', function(elem) {
+    element.on("nav(test)", function(elem) {
         // 如果点击的目录还有子目录就不做任何操作.
         if ($(elem).find("span.layui-nav-more").length === 0) {
             var obj = $(this);
@@ -143,7 +132,7 @@ layui.config({
     });
 
     // 点击标签卡定位菜单
-    element.on("tab(lay-tab)", function(elem) {
+    element.on("tab(" + tabLayFilter +")", function(elem) {
         var filter = "test"; //菜单
         var id = $(this).attr("lay-id");
         var navElem = $(".layui-nav[lay-filter='" + filter + "']"); //菜单导航元素
