@@ -4,6 +4,8 @@ layui.define(["element", "layer"], function (exports) {
     var layer = layui.layer;
 
     var tabLayFilter = "lay-tab";
+    var navLayFilter = "lay-nav";
+
     var rememberTab = true;
     var tabList = [];
     var tabsSelector = ".layui-pagetabs .layui-tab-title li[lay-id]";
@@ -112,7 +114,7 @@ layui.define(["element", "layer"], function (exports) {
         typeof zadmin[event] === "function" && zadmin[event].apply(this);
     });
 
-    element.on("nav(test)", function(elem) {
+    element.on("nav(" + navLayFilter + ")", function(elem) {
         // 如果点击的目录还有子目录就不做任何操作.
         if ($(elem).find("span.layui-nav-more").length === 0) {
             var obj = $(this);
@@ -133,9 +135,8 @@ layui.define(["element", "layer"], function (exports) {
 
     // 点击标签卡定位菜单
     element.on("tab(" + tabLayFilter +")", function(elem) {
-        var filter = "test"; //菜单
         var id = $(this).attr("lay-id");
-        var navElem = $(".layui-nav[lay-filter='" + filter + "']"); //菜单导航元素
+        var navElem = $(".layui-nav[lay-filter='" + navLayFilter + "']"); //菜单导航元素
         //移除所有选中、获取当前tab选择导航、标注选中样式、展开条目
         navElem.find("li, dd").removeClass("layui-this").find("a[lay-id='" + id + "']").parent().first().addClass("layui-this").parents("li,dd").addClass("layui-nav-itemed");
 
