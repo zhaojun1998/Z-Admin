@@ -147,10 +147,19 @@
             <!-- 底部固定区域 -->
             copyright © 2019 Z-Admin all rights reserved.
         </div>
+
+        <div class="site-mobile-shade"></div>
     </div>
 <script src="layui/layui.js"></script>
 <script src="js/jquery.js"></script>
-<script src="js/zadmin.js"></script>
+<script>
+    layui.config({
+        base: 'js/',
+    }).use(['zadmin'], function () {
+        var zadmin = layui.zadmin;
+        console.log(zadmin);
+    });
+</script>
 
 </body>
 
