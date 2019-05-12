@@ -152,7 +152,14 @@
     </div>
 <script src="layui/layui.js"></script>
 <script src="js/jquery.js"></script>
-<script src="js/zadmin.js"></script>
+<script>
+    layui.config({
+        base: 'js/',
+    }).use(['zadmin'], function () {
+        var zadmin = layui.zadmin;
+        console.log(zadmin);
+    });
+</script>
 
 </body>
 
