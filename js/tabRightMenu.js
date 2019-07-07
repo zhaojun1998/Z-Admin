@@ -36,8 +36,8 @@ layui.define(["element", "layer"], function (exports) {
 
     function customRightClick(config) {
 
-        //桌面点击右击 todo  document 范围变小.
-        $(document).on("contextmenu", "li", function (e) {
+        // tab 页点击右击
+        $(".layui-layout.layui-layout-admin .layui-pagetabs").on("contextmenu", "li", function (e) {
             var popupmenu = $(".rightmenu");
             popupmenu.show();
             currentActiveTabID = $(e.target).attr("lay-id");

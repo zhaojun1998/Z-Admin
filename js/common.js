@@ -10,9 +10,4 @@ layui.config({
         pintabIDs: ["main"],
         width: 110,
     });
-
-    // 关闭 loading 层.
-    setTimeout(function() {
-        zadmin.removeLoading();
-    }, 500);
 });

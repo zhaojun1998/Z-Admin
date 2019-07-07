@@ -5,7 +5,6 @@ layui.define(["element", "layer"], function (exports) {
 
     var tabLayFilter = "lay-tab";
     var navLayFilter = "lay-nav";
-
     var rememberTab = true;
     var tabList = [];
     var tabsSelector = ".layui-pagetabs .layui-tab-title li[lay-id]";
@@ -63,6 +62,9 @@ layui.define(["element", "layer"], function (exports) {
             var iframes = $(".layui-layout-admin .layui-tab .layui-tab-item.layui-show .layui-iframe");
             iframes[0].src = iframes[0].src;
         },
+        github: function() {
+            window.open('https://github.com/zhaojun1998/Shiro-Action');
+        },
         clear: function () {
             layer.confirm("确认清空标签缓存吗?", {icon: 3, title:"提示"}, function(index){
                 sessionStorage.setItem("tabs", null);
@@ -102,9 +104,6 @@ layui.define(["element", "layer"], function (exports) {
                 return this.buildBreadcrumb(parent, false, html);
             }
             $("body div.layui-layout-admin div.layui-header ul span.layui-breadcrumb").html(html);
-        },
-        removeLoading: function () {
-            $(".page-loading").hide();
         }
     };
 
