@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/font/iconfont.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1179208_6sxekl4z8m7.css">
+
+    <style>
+
+        #icon-view .icon-body:hover {
+            background: #f9fbff;
+            color: #5a8bff;
+        }
+
+        #icon-view .icon-body:hover .copy {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        #icon-view .icon-body .copy {
+            background: #fff;
+            width: 100%;
+            line-height: 30px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            box-shadow: #9db3e6;
+            opacity: 0;
+        }
+
+        #icon-view .icon-body {
+            text-align: center;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 150px;
+        }
+
+        #icon-view .icon-body .code,
+        #icon-view .icon-body .code-name {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.2;
+            margin-top: 10px;
+        }
+
+        #icon-view .icon-body i.zadmin-icon {
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+<body style="background-color: #f3f3f3">
+
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15" id="icon-view">
+        </div>
+    </div>
+
+    <script src="/js/jquery.js"></script>
+    <script src="/layui/layui.js"></script>
+    <script src="/js/common.js"></script>
+
+
+    <script id="demo" type="text/html">
+        {{#  layui.each(icon, function(k, v){ }}
+            <div class="layui-col-md1">
+                <div class="layui-card">
+                    <div class="layui-card-body icon-body">
+                        <i class="zadmin-icon {{k}}"></i>
+                        <div class="code">{{v}}</div>
+                        <div class="code-name">{{k}}</div>
+                        <span class="copy layui-bg-blue" data-clipboard-text="{{k}}">复制代码</span>
+                    </div>
+                </div>
+            </div>
+        {{#  }); }}
+    </script>
+
+    <script src="/layui/extend/clipboard.min.js"></script>
+
+    <script>
+        var icon = {'zadmin-icon-shouye':'首页','zadmin-icon-quanxianguankong':'权限管控','zadmin-icon-quanxian':'权限管理','zadmin-icon-GitHub':'GitHub','zadmin-icon-tiaoshi':'调试','zadmin-icon-changjingguanli':'场景管理','zadmin-icon-bianji':'编辑','zadmin-icon-guanlianshebei':'关联设备','zadmin-icon-guanfangbanben':'官方版本','zadmin-icon-gongnengdingyi':'功能定义','zadmin-icon-jichuguanli':'基础管理','zadmin-icon-jishufuwu':'技术服务','zadmin-icon-hezuohuobanmiyueguanli':'合作伙伴密钥管理','zadmin-icon-ceshishenqing':'测试申请','zadmin-icon-jiedianguanli':'节点管理','zadmin-icon-jinggao':'警告','zadmin-icon-peiwangyindao':'配网引导','zadmin-icon-renjijiaohu':'人机交互','zadmin-icon-shiyongwendang':'使用文档','zadmin-icon-quanxianshenpi':'权限审批','zadmin-icon-yishouquan':'已授权','zadmin-icon-tianshenpi':'提案审批','zadmin-icon-shujukanban':'数据看板','zadmin-icon-yingyongguanli':'应用管理','zadmin-icon-yibiaopan':'仪表盘','zadmin-icon-zhanghaoquanxianguanli':'账号权限管理','zadmin-icon-yuanquyunwei':'园区运维','zadmin-icon-jizhanguanli':'基站管理','zadmin-icon-guanbi':'关闭','zadmin-icon-zidingyi':'自定义','zadmin-icon-xiajiantou':'下箭头','zadmin-icon-shangjiantou':'上箭头','zadmin-icon-icon_loading':'icon_loading','zadmin-icon-icon_renwujincheng':'icon_任务进程','zadmin-icon-icon_rukou':'icon_入口','zadmin-icon-icon_yiwenkongxin':'icon_疑问空心','zadmin-icon-icon_fabu':'icon_发布','zadmin-icon-icon_tianjia':'icon_添加','zadmin-icon-icon_yulan':'icon_预览','zadmin-icon-icon_zhanghao':'icon_账号','zadmin-icon-icon_wangye':'icon_网页','zadmin-icon-icon_shezhi':'icon_设置','zadmin-icon-icon_baocun':'icon_保存','zadmin-icon-icon_yingyongguanli':'icon_应用管理','zadmin-icon-icon_shiyongwendang':'icon_使用文档','zadmin-icon-icon_bangzhuwendang':'icon_帮助文档','zadmin-icon-biaodanzujian-shurukuang':'表单组件-输入框','zadmin-icon-biaodanzujian-biaoge':'表单组件-表格','zadmin-icon-biaodanzujian-xialakuang':'表单组件-下拉框','zadmin-icon-tubiao-bingtu':'图表-饼图','zadmin-icon-biaodanzujian-anniu':'表单组件-按钮','zadmin-icon-gongyezujian-yibiaopan':'工业组件-仪表盘','zadmin-icon-tubiao-qiapian':'图表-卡片','zadmin-icon-gongyezujian-zhishideng':'工业组件-指示灯','zadmin-icon-tubiao-zhexiantu':'图表-折线图','zadmin-icon-xingzhuang-juxing':'形状-矩形','zadmin-icon-xingzhuang-jianxing':'形状-箭形','zadmin-icon-gongyezujian-kaiguan':'工业组件-开关','zadmin-icon-tubiao-zhuzhuangtu':'图表-柱状图','zadmin-icon-xingzhuang-tupian':'形状-图片','zadmin-icon-xingzhuang-wenzi':'形状-文字','zadmin-icon-xingzhuang-tuoyuanxing':'形状-椭圆形','zadmin-icon-xingzhuang-sanjiaoxing':'形状-三角形','zadmin-icon-xingzhuang-xingxing':'形状-星形','zadmin-icon-xinzeng':'新增','zadmin-icon-guize':'规则','zadmin-icon-shebeiguanli':'设备管理','zadmin-icon-gongnengdingyi1':'功能定义','zadmin-icon-jishufuwu1':'技术服务','zadmin-icon-yunyingzhongxin':'运营中心','zadmin-icon-yunyingguanli':'运营管理','zadmin-icon-zuzhixiaxia':'组织下辖','zadmin-icon-zuzhizhankai':'组织展开','zadmin-icon-zuzhiqunzu':'组织群组','zadmin-icon-dakai':'打开','zadmin-icon-yingwen':'英文','zadmin-icon-zhongwen':'中文','zadmin-icon-miwen':'密文','zadmin-icon-xianhao':'显号','zadmin-icon-kongxinduigou':'空心对勾','zadmin-icon-huixingzhen':'回形针','zadmin-icon-duigou':'对勾','zadmin-icon-xiayibu':'下一步','zadmin-icon-shangyibu':'上一步','zadmin-icon-kongjianxuanzhong':'控件选中','zadmin-icon-kongjianweixuan':'控件未选','zadmin-icon-kongjianyixuan':'控件已选','zadmin-icon--diangan':'0117- 电杆','zadmin-icon-rongxuejirongjiechi':'0309融雪剂溶解池*','zadmin-icon-lubiantingchechang':'0215路边停车场*','zadmin-icon--lumingpai':'0213-路名牌','zadmin-icon-jietouzuoyi':'0407街头座椅','zadmin-icon--zhongdaweixian':'0601-重大危险','zadmin-icon--jiaotongbiaozhipai':'0209-交通标志牌','zadmin-icon-gongcezhishipai':'0303公厕指示牌','zadmin-icon-fangkuai':'方块+','zadmin-icon-fangkuai-':'方块-','zadmin-icon-shuaxin':'刷新','zadmin-icon-baocun':'保存','zadmin-icon-fabu':'发布','zadmin-icon-xiayibu1':'下一步','zadmin-icon-shangyibu1':'上一步','zadmin-icon-xiangxiazhanhang':'向下占行','zadmin-icon-xiangshangzhanhang':'向上占行','zadmin-icon-tupianjiazaishibai':'图片加载失败','zadmin-icon-fuwudiqiu':'服务地球','zadmin-icon-setting':'setting','zadmin-icon-edit-square':'edit-square','zadmin-icon-delete':'delete','zadmin-icon-minus':'minus','zadmin-icon-suoxiao':'缩小','zadmin-icon-fangda':'放大','zadmin-icon-huanyuanhuabu':'还原画布','zadmin-icon-quanping':'全屏','zadmin-icon-biaodanzujian-biaoge1':'表单组件-表格','zadmin-icon-APIshuchu':'API输出','zadmin-icon-APIjieru':'API接入','zadmin-icon-wenjianjia':'文件夹','zadmin-icon-DOC':'DOC','zadmin-icon-BMP':'BMP','zadmin-icon-GIF':'GIF','zadmin-icon-JPG':'JPG','zadmin-icon-PNG':'PNG','zadmin-icon-weizhigeshi':'未知格式','zadmin-icon-gengduo':'更多','zadmin-icon-yunduanxiazai':'云端下载','zadmin-icon-yunduanshangchuan':'云端上传','zadmin-icon-dian':'点','zadmin-icon-mian':'面','zadmin-icon-xian':'线','zadmin-icon-clean':'超时清理','zadmin-icon-shebeizhuangtai':'设备状态','zadmin-icon-fenzuguanli':'分组管理','zadmin-icon-kuaisubianpai':'快速编排','zadmin-icon-APPkaifa':'APP开发','zadmin-icon-wentijieda':'问题解答','zadmin-icon-kefu':'客服','zadmin-icon-ruanjiankaifabao':'软件开发包','zadmin-icon-shangyimian':'上移（面）','zadmin-icon-xiayimian':'下移（面）','zadmin-icon-zhidimian':'置底（面）','zadmin-icon-zhidingmian':'置顶（面）','zadmin-icon-sousuobianxiao':'搜索变小','zadmin-icon-sousuofangda':'搜索放大','zadmin-icon-dingwei':'定位','zadmin-icon-wumoxing':'物模型','zadmin-icon-gaojing':'告警','zadmin-icon-renwujincheng':'任务进程','zadmin-icon-xiaoxitongzhi':'消息通知','zadmin-icon-youhui':'优惠','zadmin-icon-gaojing1':'告警','zadmin-icon-zhihangfankui':'执行反馈','zadmin-icon-gongdanqueren':'工单确认','zadmin-icon-guangbo':'广播','zadmin-icon-gongdan':'工单','zadmin-icon-xiaoxi':'消息','zadmin-icon-ditu-qi':'地图-旗','zadmin-icon-ditu-dibiao':'地图-地标','zadmin-icon-ditu-cha':'地图-叉','zadmin-icon-ditu-qipao':'地图-气泡','zadmin-icon-ditu-tuding':'地图-图钉','zadmin-icon-ditu-huan':'地图-环','zadmin-icon-ditu-xing':'地图-星','zadmin-icon-ditu-yuan':'地图-圆','zadmin-icon-chehuisekuai':'撤回色块','zadmin-icon-shanchusekuai':'删除色块','zadmin-icon-fabusekuai':'发布色块','zadmin-icon-xinhao':'信号','zadmin-icon-lanya':'蓝牙','zadmin-icon-Wi-Fi':'Wi-Fi','zadmin-icon-chaxun':'查询','zadmin-icon-dianbiao':'电表','zadmin-icon-anquan':'安全','zadmin-icon-daibanshixiang':'待办事项','zadmin-icon-bingxiang':'冰箱','zadmin-icon-fanshe':'反射','zadmin-icon-fengche':'风车','zadmin-icon-guandao':'管道','zadmin-icon-guize1':'规则','zadmin-icon-guizeyinqing':'规则引擎','zadmin-icon-huowudui':'货物堆','zadmin-icon-jianceqi':'检测器','zadmin-icon-jinggai':'井盖','zadmin-icon-liujisuan':'流计算','zadmin-icon-hanshu':'函数','zadmin-icon-lianjieliu':'连接流','zadmin-icon-ludeng':'路灯','zadmin-icon-shexiangji':'摄像机','zadmin-icon-rentijiance':'人体检测','zadmin-icon-moshubang':'魔术棒','zadmin-icon-shujuwajue':'数据挖掘','zadmin-icon-wangguan':'网关','zadmin-icon-shenjing':'人脑','zadmin-icon-chucun':'储存','zadmin-icon-wuguan':'AI','zadmin-icon-yunduanshuaxin':'云端刷新','zadmin-icon-yunhang':'运行','zadmin-icon-luyouqi':'路由器','zadmin-icon-bug':'bug','zadmin-icon-get':'get','zadmin-icon-PIR':'PIR','zadmin-icon-zhexiantu':'折线图','zadmin-icon-shuibiao':'水表','zadmin-icon-js':'js','zadmin-icon-zihangche':'自行车','zadmin-icon-liebiao':'列表','zadmin-icon-qichedingwei':'汽车定位','zadmin-icon-dici':'地磁','zadmin-icon-mysql':'mysql','zadmin-icon-qiche':'汽车','zadmin-icon-shenjing1':'神经','zadmin-icon-chengshi':'城市','zadmin-icon-tixingshixin':'告警实心','zadmin-icon-menci':'门磁','zadmin-icon-chazuo':'插座','zadmin-icon-ranqijianceqi':'燃气监测器','zadmin-icon-kaiguan':'开关','zadmin-icon-chatou':'插头','zadmin-icon-xiyiji':'洗衣机','zadmin-icon-yijiankaiguan':'一键开关','zadmin-icon-yanwubaojingqi':'烟雾报警器','zadmin-icon-wuxiandianbo':'无线电波','zadmin-icon-fuzhi':'复制','zadmin-icon-shanchu':'删除','zadmin-icon-wuquanxian':'无权限','zadmin-icon-bianjisekuai':'编辑色块','zadmin-icon-ishipinshixiao':'i视频失效','zadmin-icon-iframetianjia':'iframe添加','zadmin-icon-tupiantianjia':'图片添加','zadmin-icon-liebiaomoshi_kuai':'列表模式_块','zadmin-icon-qiapianmoshi_kuai':'卡片模式_块','zadmin-icon-fenlan':'分栏','zadmin-icon-fengexian':'分割线','zadmin-icon-dianzan':'点赞','zadmin-icon-charulianjie':'插入链接','zadmin-icon-charutupian':'插入图片','zadmin-icon-quxiaolianjie':'取消链接','zadmin-icon-wuxupailie':'无序排列','zadmin-icon-juzhongduiqi':'居中对齐','zadmin-icon-yinyong':'引用','zadmin-icon-youxupailie':'有序排列','zadmin-icon-youduiqi':'右对齐','zadmin-icon-zitidaima':'字体代码','zadmin-icon-xiaolian':'笑脸','zadmin-icon-zitijiacu':'字体加粗','zadmin-icon-zitishanchuxian':'字体删除线','zadmin-icon-zitishangbiao':'字体上标','zadmin-icon-zitibiaoti':'字体标题','zadmin-icon-zitixiahuaxian':'字体下划线','zadmin-icon-zitixieti':'字体斜体','zadmin-icon-zitiyanse':'字体颜色','zadmin-icon-zuoduiqi':'左对齐','zadmin-icon-zitiyulan':'字体预览','zadmin-icon-zitixiabiao':'字体下标','zadmin-icon-zuoyouduiqi':'左右对齐','zadmin-icon-tianxie':'编辑','zadmin-icon-huowudui1':'集成打包','zadmin-icon-yingjian':'硬件','zadmin-icon-shebeikaifa':'设备开发','zadmin-icon-dianzan_kuai':'点赞_块','zadmin-icon-zhihuan':'置换','zadmin-icon-tuoguan':'托管','zadmin-icon-search':'search','zadmin-icon-duigoux':'对勾','zadmin-icon-guanbi1':'关闭','zadmin-icon-aixin_shixin':'爱心 _实心','zadmin-icon-ranqixieloubaojingqi':'燃气泄漏报警器','zadmin-icon-dianbiao_shiti':'电表_实体','zadmin-icon-aixin':'爱心','zadmin-icon-shuibiao_shiti':'水表_实体','zadmin-icon-zhinengxiaofangshuan':'智能消防栓','zadmin-icon-ranqibiao_shiti':'燃气表_实体','zadmin-icon-shexiangtou_shiti':'摄像头_实体','zadmin-icon-shexiangtou_guanbi':'摄像头_关闭','zadmin-icon-shexiangtou':'摄像头','zadmin-icon-shengyin_shiti':'声音_实体','zadmin-icon-shengyinkai':'声音开','zadmin-icon-shoucang_shixin':'收藏_实心','zadmin-icon-shoucang':'收藏','zadmin-icon-shengyinwu':'声音无','zadmin-icon-shengyinjingyin':'声音静音','zadmin-icon-zhunbeiliangchan':'准备量产','zadmin-icon-shebeikaifa1':'设备开发','zadmin-icon-quanxianguanli':'权限管理','zadmin-icon-wuquanxianfangwen':'无权限访问','zadmin-icon-plus':'plus','zadmin-icon-kongxinwenhao':'空心问号','zadmin-icon-cuowukongxin':'错误空心','zadmin-icon-fangkuai1':'方块','zadmin-icon-fangkuai2':'方块+','zadmin-icon-kongjianxuanzhong1':'控件选中','zadmin-icon-kongxinduigou1':'空心对勾','zadmin-icon-xinxikongxin':'信息空心','zadmin-icon-kongjian':'控件','zadmin-icon-gaojingkongxin':'告警空心','zadmin-icon-duigou_kuai':'对勾_块','zadmin-icon-cuocha_kuai':'错叉_块','zadmin-icon-jia_sekuai':'加_色块','zadmin-icon-jian_sekuai':'减_色块','zadmin-icon-fenxiangfangshi':'分享方式','zadmin-icon-icon_qiangzhixiaxian':'icon_强制下线','zadmin-icon-icon-test':'view','zadmin-icon-icon-test1':'view_off','zadmin-icon-icon-test2':'message','zadmin-icon-icon-test3':'message_unread','zadmin-icon-icon-test4':'record','zadmin-icon-icon-test5':'time','zadmin-icon-icon-test6':'credits','zadmin-icon-icon-test7':'renew','zadmin-icon-icon-test8':'order','zadmin-icon-icon-test9':'order_unread','zadmin-icon-icon-test10':'cart_empty','zadmin-icon-icon-test11':'cart','zadmin-icon-icon-test12':'search','zadmin-icon-icon-test13':'edit','zadmin-icon-icon-test14':'link','zadmin-icon-icon-test15':'share','zadmin-icon-icon-test16':'setting','zadmin-icon-icon-test17':'upload','zadmin-icon-icon-test18':'download','zadmin-icon-icon-test19':'play','zadmin-icon-icon-test20':'region','zadmin-icon-icon-test21':'discount','zadmin-icon-icon-test22':'notification','zadmin-icon-icon-test23':'notification_off','zadmin-icon-icon-test24':'phonecall','zadmin-icon-icon-test25':'phonecall_off','zadmin-icon-icon-test26':'lock','zadmin-icon-icon-test27':'unlock','zadmin-icon-icon-test28':'ET','zadmin-icon-icon-test29':'flow','zadmin-icon-icon-test30':'filter','zadmin-icon-icon-test31':'calculator','zadmin-icon-icon-test32':'image','zadmin-icon-icon-test33':'email','zadmin-icon-icon-test34':'copy','zadmin-icon-icon-test35':'user','zadmin-icon-icon-test36':'customer_service','zadmin-icon-icon-test37':'sub_account','zadmin-icon-icon-test38':'partner','zadmin-icon-icon-test39':'list','zadmin-icon-icon-test40':'international','zadmin-icon-icon-test41':'refresh','zadmin-icon-icon-test42':'close_filled','zadmin-icon-icon-test43':'check','zadmin-icon-icon-test44':'close','zadmin-icon-icon-test45':'check_filled','zadmin-icon-icon-test46':'forbidden','zadmin-icon-icon-test47':'forbidden_filled','zadmin-icon-icon-test48':'info_filled','zadmin-icon-icon-test49':'info','zadmin-icon-icon-test50':'help_filled','zadmin-icon-icon-test51':'help','zadmin-icon-icon-test52':'caution','zadmin-icon-icon-test53':'caution_filled','zadmin-icon-icon-test54':'like','zadmin-icon-icon-test55':'like_filled','zadmin-icon-icon-test56':'star','zadmin-icon-icon-test57':'star_filled','zadmin-icon-icon-test58':'arrow_up','zadmin-icon-icon-test59':'arrow_left','zadmin-icon-icon-test60':'arrow_down','zadmin-icon-icon-test61':'arrow_right','zadmin-icon-icon-test62':'page_first','zadmin-icon-icon-test63':'down_to_bottom','zadmin-icon-icon-test64':'up_to_top','zadmin-icon-icon-test65':'page_last','zadmin-icon-icon-test66':'page_turning_left','zadmin-icon-icon-test67':'page_turning_right','zadmin-icon-icon-test68':'show_less','zadmin-icon-icon-test69':'show_more','zadmin-icon-icon-test70':'social_fb','zadmin-icon-icon-test71':'social_linkedin','zadmin-icon-icon-test72':'social_sina','zadmin-icon-icon-test73':'social_google','zadmin-icon-icon-test74':'social_naver','zadmin-icon-icon-test75':'social_stackflow','zadmin-icon-icon-test76':'social_youtube','zadmin-icon-icon-test77':'social_github','zadmin-icon-icon-test78':'social_twitter','zadmin-icon-icon-test79':'applets','zadmin-icon-icon-test80':'social_wechat','zadmin-icon-icon-test82':'balance','zadmin-icon-icon-test83':'go-to-link','zadmin-icon-icon-test84':'benefits','zadmin-icon-alipay':'alipay','zadmin-icon-taobao':'taobao'}
+        layui.use(['laytpl', 'jquery'], function () {
+            var $ = jQuery = layui.jquery;
+            var laytpl = layui.laytpl;
+
+            laytpl(document.getElementById("demo").innerHTML).render(icon, function (html) {
+                document.getElementById("icon-view").innerHTML = html;
+            });
+
+            var clipboard = new ClipboardJS('.copy');
+
+            clipboard.on('success', function (e) {
+                layer.msg("复制成功", {icon: 6});
+            });
+
+            clipboard.on('error', function (e) {
+               layui.hint(e);
+            });
+        });
+
+    </script>
+
+</body>
+</html>

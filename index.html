@@ -11,6 +11,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
     <link rel="stylesheet" href="layui/css/layui.css">
     <link rel="stylesheet" href="css/zadmin.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="font/iconfont.css">
 </head>
 
 <body class="layui-layout-body">
@@ -40,7 +42,13 @@
             <!-- 头像区域 -->
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
-                    <a lay-event="clear" title="清理标签缓存"><img src="/images/clear.png" alt="" style="height: 18px;"/></a>
+                    <a lay-event="github" title="Github 地址">
+                        <i class="zadmin-icon zadmin-icon-GitHub"></i>
+                    </a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a lay-event="clear" title="清理标签缓存"><i class="zadmin-icon zadmin-icon-clean"></i></a>
                 </li>
 
                 <li class="layui-nav-item">
@@ -49,7 +57,7 @@
                         <cite>管理员</cite>
                         <span class="layui-nav-more"></span>
                     </a>
-                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                    <dl class="layui-nav-child">
                         <dd lay-unselect>
                             <a href="#">个人中心</a>
                         </dd>
@@ -66,17 +74,41 @@
         </div>
 
         <!-- 左侧导航区域 -->
-        <div class="layui-side">
+        <div class="layui-side ">
             <div class="layui-side-scroll">
                 <ul class="layui-nav layui-nav-tree" lay-filter="lay-nav" lay-accordion="true">
                     <li class="layui-nav-item layui-this">
                         <a lay-url="/home/index.html" lay-id="home">
-                            <i class="layui-icon layui-icon-template"></i>&emsp;<cite>首页</cite>
+                            <i class="zadmin-icon zadmin-icon-shouye"></i>&emsp;<cite>首页</cite>
                         </a>
                     </li>
+
+                    <li class="layui-nav-item">
+                        <a lay-id="#" lay-url="#">
+                            <i class="zadmin-icon zadmin-icon-quanxian"></i>&emsp;<cite>权限管理</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-id="/user/index" lay-url="/view/user/user-list.html">
+                                    <cite>用户管理</cite>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a lay-id="/role/index" lay-url="/view/role/role-list.html">
+                                    <cite>角色管理</cite>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a lay-id="/menu/index" lay-url="/view/menu/menu-list.html">
+                                    <cite>菜单权限</cite>
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
+
                     <li class="layui-nav-item">
                         <a>
-                            <i class="layui-icon layui-icon-home"></i>&emsp;<cite>多级菜单</cite>
+                            <i class="zadmin-icon zadmin-icon-liebiao"></i>&emsp;<cite>多级菜单</cite>
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
@@ -109,7 +141,12 @@
                     </li>
                     <li class="layui-nav-item">
                         <a lay-id="一级菜单" lay-url="https://www.baidu.com">
-                            <i class="layui-icon layui-icon-app"></i>&emsp;<cite>一级菜单</cite>
+                            <i class="zadmin-icon zadmin-icon-icon_wangye"></i>&emsp;<cite>一级菜单</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a lay-id="图标" lay-url="/view/menu/menu.html">
+                            <i class="zadmin-icon zadmin-icon-xingzhuang-tupian"></i>&emsp;<cite>图标</cite>
                         </a>
                     </li>
                 </ul>
