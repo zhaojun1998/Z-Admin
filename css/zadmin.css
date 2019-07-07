@@ -7,7 +7,11 @@
     box-shadow: 0 1px 0 0 rgba(0,0,0,.05);
 }
 
-.layui-layout-admin .layui-header .layui-nav .layui-this:after, 
+.layui-layout-admin .layui-header .layui-nav .layui-this:after{
+    height: 0;
+    top: 0!important;
+}
+
 .layui-layout-admin .layui-header .layui-nav-bar {
     height: 2px;
     background-color: #03152a;
@@ -67,6 +71,12 @@
 .layui-layout-admin .layui-header .layui-nav {
     padding: 0 10px;
 }
+
+
+.layui-layout-admin .layui-header .layui-nav-item .zadmin-icon {
+    font-size: 18px;
+}
+
 /* ----- 头部样式 ----- */
 
 
@@ -235,7 +245,8 @@
     background-color: transparent;
 }
 
-.layui-layout-admin .layui-side .layui-nav .layui-nav-item .layui-icon {
+.layui-layout-admin .layui-side .layui-nav .layui-nav-item .layui-icon,
+.layui-layout-admin .layui-side .layui-nav .layui-nav-item .zadmin-icon {
     position: absolute;
     top: 50%;
     left: 20px;
@@ -604,4 +615,8 @@
 
 html {
     font-style: normal;
+}
+
+.layui-btn-primary:hover {
+    color: #aaaaaa;
 }

@@ -35,3 +35,80 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.zadmin-body {
+    margin: 30px;
+}
+
+.zadmin-icon {
+    cursor: pointer;
+}
+
+.zadmin-search-area input {
+    height: 32px;
+}
+
+.zadmin-oper-area {
+    font-size: 18px !important;
+    margin-right: 5px;
+}
+
+.zadmin-blue {
+    color: #02a7f0;
+}
+
+.zadmin-red {
+    color: #F56C6C;
+}
+
+.zadmin-left {
+    float: left;
+}
+
+.zadmin-right {
+    float: right;
+}
+
+.layui-form-select dl dd.layui-this {
+    background-color: #02a7f0;
+    color: white;
+}
+
+.layui-form-onswitch {
+    background-color: #02a7f0;
+    border-color: #02a7f0;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    background-color: #02a7f0;
+}
+
+.layui-input:focus, .layui-textarea:focus {
+    border-color: #02a7f0 !important;
+}
+
+.layui-btn-primary:hover {
+    border-color: #02a7f0;
+}
+
+.layui-laypage input:focus, .layui-laypage select:focus {
+    border-color: #02a7f0 !important;
+}
+
+.layui-laypage em {
+    font-weight: bold;
+}
+
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #02a7f0 !important;
+    background-color: #02a7f0;
+}
+
+
+.layui-form-radio>i:hover, .layui-form-radioed>i {
+    color: #02a7f0;
+}
+
+.layui-breadcrumb a:hover {
+    color: #02a7f0 !important;
+}
